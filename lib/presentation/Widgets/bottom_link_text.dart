@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 class BottomLinkText extends StatelessWidget {
   final String text;
   final String linkText;
+  final Function() onPressedLink;
 
-  const BottomLinkText({Key key, @required this.text, this.linkText})
-      : super(key: key);
+  const BottomLinkText({
+    Key key,
+    @required this.text,
+    this.linkText,
+    this.onPressedLink,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +26,13 @@ class BottomLinkText extends StatelessWidget {
             ButtonTheme(
               minWidth: 0,
               child: FlatButton(
-                  padding: EdgeInsets.all(5.0),
-                  onPressed: () {},
-                  child: Text(
-                    linkText,
-                    style: TextStyle(color: primaryColor),
-                  )),
+                padding: EdgeInsets.all(5.0),
+                onPressed: onPressedLink,
+                child: Text(
+                  linkText,
+                  style: TextStyle(color: primaryColor),
+                ),
+              ),
             ),
         ],
       ),

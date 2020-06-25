@@ -7,11 +7,13 @@ class WhiteTheme {
       canvasColor: Colors.white,
       cardColor: Colors.white,
       scaffoldBackgroundColor: Colors.white,
+      brightness: Brightness.light,
       textTheme: ThemeData.light().textTheme.copyWith(
-          headline4: ThemeData.light().textTheme.headline4.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              )),
+            headline4: ThemeData.light().textTheme.headline4.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+          ),
     );
   }
 }

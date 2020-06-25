@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class BarlessScaffold extends StatelessWidget {
   final Widget body;
@@ -14,10 +15,15 @@ class BarlessScaffold extends StatelessWidget {
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
+          iconTheme:
+              IconThemeData(color: Theme.of(context).textTheme.bodyText2.color),
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),
-        body: body,
+        body: AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle.light,
+          child: body,
+        ),
       ),
     );
   }

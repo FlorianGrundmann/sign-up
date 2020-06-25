@@ -7,6 +7,7 @@ import '../Widgets/heading.dart';
 import '../Widgets/main_button.dart';
 import '../Widgets/topright_logo.dart';
 import '../styles/constants.dart';
+import 'email_sign_up_page.dart';
 
 class EmailLoginPage extends StatefulWidget {
   EmailLoginPage({Key key}) : super(key: key);
@@ -79,6 +80,12 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
         BottomLinkText(
           text: "Don't have an account?",
           linkText: 'Sign up',
+          onPressedLink: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => EmailSignUpPage()),
+            );
+          },
         ),
         //_buildBottomText(),
       ],

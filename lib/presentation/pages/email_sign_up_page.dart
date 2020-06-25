@@ -101,6 +101,9 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
     return BottomLinkText(
       text: bottomText,
       linkText: linkText,
+      onPressedLink: () {
+        Navigator.pop(context);
+      },
     );
   }
 }
