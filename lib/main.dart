@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sign_up/presentation/pages/email_sign_up.dart';
+
+import 'presentation/pages/email_sign_up.dart';
+import 'presentation/styles/white_theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,10 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: WhiteTheme().themeData,
       home: EmailSignUpPage(),
     );
   }

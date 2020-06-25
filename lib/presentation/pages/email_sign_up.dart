@@ -116,7 +116,7 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
     final double smallVerticalDistance = 5.0;
 
     Color canvasColor = Theme.of(context).canvasColor;
-    Color secondaryColor = Theme.of(context).textTheme.headline4.color;
+    Color secondaryColor = Theme.of(context).hintColor;
     TextStyle inputTextStyle = Theme.of(context).textTheme.subtitle2;
 
     return Container(
@@ -177,7 +177,7 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
   Widget _buildBottomText() {
     final String bottomText = 'Already have an account?';
     final String linkText = 'Sign in';
-    final Color primaryColor = Theme.of(context).primaryColor;
+    final Color primaryColor = Theme.of(context).hintColor;
 
     return Align(
       alignment: Alignment.bottomCenter,
