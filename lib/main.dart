@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'presentation/pages/email_sign_up.dart';
+import 'presentation/pages/email_login_page.dart';
 import 'presentation/styles/white_theme.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: WhiteTheme().themeData,
-      home: EmailSignUpPage(),
+      home: EmailLoginPage(),
     );
   }
 }
