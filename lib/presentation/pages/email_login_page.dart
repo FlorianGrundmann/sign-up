@@ -83,6 +83,7 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
           FlatCardTextField(
             text: 'password',
             icon: Icons.lock_outline,
+            obscureText: true,
             validator: validation.validatePassword,
           ),
           verticalDistance,

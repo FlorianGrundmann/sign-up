@@ -79,6 +79,7 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
           FlatCardTextField(
             text: 'password',
             icon: Icons.lock_outline,
+            obscureText: true,
             validator: validation.validatePassword,
           ),
           verticalDistance,

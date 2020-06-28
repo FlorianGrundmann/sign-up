@@ -4,6 +4,7 @@ class FlatCardTextField extends StatefulWidget {
   final String text;
   final IconData icon;
   final bool autovalidate;
+  final bool obscureText;
   final Function(String) validator;
 
   const FlatCardTextField({
@@ -12,6 +13,7 @@ class FlatCardTextField extends StatefulWidget {
     @required this.icon,
     this.validator,
     this.autovalidate,
+    this.obscureText,
   }) : super(key: key);
 
   @override
@@ -46,6 +48,7 @@ class _FlatCardTextFieldState extends State<FlatCardTextField> {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: textFieldPadding),
           child: TextFormField(
+            obscureText: widget.obscureText ?? false,
             autovalidate: widget.autovalidate ?? false,
             validator: widget.validator,
             focusNode: focus,
