@@ -6,8 +6,8 @@ class InputValidation {
   final String invalidEmail = 'Email is invalid.';
 
   final String noPassword = 'Password cannot be empty.';
-  final String invalidPassword =
-      'Passwords must contain at minimum 8 characters, at least one letter and one number.';
+  final String invalidPassword = 'At least 1 letter and 1 number required.';
+  final String shortPassword = 'Minimum 8 characters required.';
 
   final String notMatch = 'Password do not match.';
 
@@ -39,6 +39,10 @@ class InputValidation {
   String validatePassword(String password) {
     if (password == null) {
       return noPassword;
+    }
+
+    if (password.length < 8) {
+      return shortPassword;
     }
 
     if (!password.contains(RegExp(r'^(?=.*[A-Za-z])(?=.*\d).{8,}$'))) {
