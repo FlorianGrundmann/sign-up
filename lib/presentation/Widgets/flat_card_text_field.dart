@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 class FlatCardTextField extends StatefulWidget {
   final String text;
   final IconData icon;
+  final bool autovalidate;
+  final Function(String) validator;
 
   const FlatCardTextField({
     Key key,
     @required this.text,
     @required this.icon,
+    this.validator,
+    this.autovalidate,
   }) : super(key: key);
 
   @override
@@ -41,7 +45,9 @@ class _FlatCardTextFieldState extends State<FlatCardTextField> {
         color: canvasColor,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: textFieldPadding),
-          child: TextField(
+          child: TextFormField(
+            autovalidate: widget.autovalidate ?? false,
+            validator: widget.validator,
             focusNode: focus,
             style: inputTextStyle,
             decoration: InputDecoration(

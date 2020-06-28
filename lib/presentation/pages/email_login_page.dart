@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sign_up/presentation/Widgets/bottom_link_text.dart';
-import 'package:sign_up/presentation/Widgets/flat_card_text_field.dart';
 
+import '../../domain/services/input_validation.dart';
 import '../Widgets/barless_scaffold.dart';
+import '../Widgets/bottom_link_text.dart';
+import '../Widgets/flat_card_text_field.dart';
 import '../Widgets/heading.dart';
 import '../Widgets/main_button.dart';
 import '../Widgets/topright_logo.dart';
@@ -17,6 +18,8 @@ class EmailLoginPage extends StatefulWidget {
 }
 
 class _EmailLoginPageState extends State<EmailLoginPage> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -66,36 +69,53 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
 
   Widget _buildForm() {
     final Widget verticalDistance = Constants.smallVerticalWhiteSpace;
+    final InputValidation validation = InputValidation();
 
-    return Column(
-      children: <Widget>[
-        FlatCardTextField(text: 'email', icon: Icons.email),
-        FlatCardTextField(text: 'password', icon: Icons.lock_outline),
-        verticalDistance,
-        Align(
-          alignment: Alignment.topRight,
-          child: _buildSignUpButton(),
-        ),
-        verticalDistance,
-        BottomLinkText(
-          text: "Don't have an account?",
-          linkText: 'Sign up',
-          onPressedLink: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => EmailSignUpPage()),
-            );
-          },
-        ),
-        //_buildBottomText(),
-      ],
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: <Widget>[
+          FlatCardTextField(
+            text: 'email',
+            icon: Icons.email,
+            validator: validation.validateEmail,
+          ),
+          FlatCardTextField(
+            text: 'password',
+            icon: Icons.lock_outline,
+            validator: validation.validatePassword,
+          ),
+          verticalDistance,
+          Align(
+            alignment: Alignment.topRight,
+            child: _buildSignUpButton(),
+          ),
+          verticalDistance,
+          BottomLinkText(
+            text: "Don't have an account?",
+            linkText: 'Sign up',
+            onPressedLink: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => EmailSignUpPage()),
+              );
+            },
+          ),
+          //_buildBottomText(),
+        ],
+      ),
     );
   }
 
   Widget _buildSignUpButton() {
     return MainButton(
       text: 'LOGIN',
-      onPressed: () {},
+      onPressed: () {
+        if (_formKey.currentState.validate()) {
+          Scaffold.of(context)
+              .showSnackBar(SnackBar(content: Text('Processing Data')));
+        }
+      },
       iconData: Icons.arrow_forward,
     );
   }

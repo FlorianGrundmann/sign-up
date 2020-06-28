@@ -23,7 +23,6 @@ class MainButton extends StatelessWidget {
             color: Theme.of(context).primaryTextTheme.button.color,
           )
         : null;
-    final Function() onPressed = () {};
 
     return RaisedButton.icon(
       padding: EdgeInsets.symmetric(
