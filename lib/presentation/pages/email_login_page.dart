@@ -60,9 +60,11 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
 
   Widget _buildHeading() {
     final String headingText = 'Login';
+    final String subHeadingText = 'Please sign in to continue.';
 
     return Heading(
       text: headingText,
+      subtext: subHeadingText,
       alignment: Alignment.bottomLeft,
     );
   }
