@@ -11,19 +11,17 @@ class BarlessScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          iconTheme:
-              IconThemeData(color: Theme.of(context).textTheme.bodyText2.color),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
-        body: AnnotatedRegion<SystemUiOverlayStyle>(
-          value: SystemUiOverlayStyle.light,
-          child: body,
-        ),
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        iconTheme:
+            IconThemeData(color: Theme.of(context).textTheme.bodyText2.color),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      body: AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.light,
+        child: body,
       ),
     );
   }

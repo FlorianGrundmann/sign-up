@@ -24,7 +24,7 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
     return BarlessScaffold(
       body: Stack(
         children: <Widget>[
-          ToprightLogo(),
+          const ToprightLogo(),
           _buildBody(),
         ],
       ),
@@ -40,7 +40,6 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
       child: Column(
         children: <Widget>[
           Flexible(
-            flex: 1,
             child: _buildHeading(),
           ),
           verticalWhiteSpace,
@@ -95,7 +94,7 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
   }
 
   Widget _buildHeading() {
-    final String headingText = 'Create Account';
+    const String headingText = 'Create Account';
 
     return Heading(
       text: headingText,
@@ -104,13 +103,13 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
   }
 
   Widget _buildSignUpButton() {
-    final String buttonText = 'SIGN UP';
+    const String buttonText = 'SIGN UP';
 
     return MainButton(
       onPressed: () {
         if (_formKey.currentState.validate()) {
           Scaffold.of(context)
-              .showSnackBar(SnackBar(content: Text('Processing Data')));
+              .showSnackBar(const SnackBar(content: Text('Processing Data')));
         }
       },
       text: buttonText,
@@ -119,8 +118,8 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
   }
 
   Widget _buildBottomText() {
-    final String bottomText = 'Already have an account?';
-    final String linkText = 'Sign in';
+    const String bottomText = 'Already have an account?';
+    const String linkText = 'Sign in';
 
     return BottomLinkText(
       text: bottomText,

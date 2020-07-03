@@ -5,7 +5,7 @@ class FlatCardTextField extends StatefulWidget {
   final IconData icon;
   final bool autovalidate;
   final bool obscureText;
-  final Function(String) validator;
+  final String Function(String) validator;
 
   const FlatCardTextField({
     Key key,
@@ -33,43 +33,41 @@ class _FlatCardTextFieldState extends State<FlatCardTextField> {
 
   @override
   Widget build(BuildContext context) {
-    final double textFieldElevation = 5.0;
-    final double textFieldPadding = 10.0;
-    final double smallVerticalDistance = 5.0;
+    const double textFieldElevation = 5.0;
+    const double textFieldPadding = 10.0;
+    const double smallVerticalDistance = 5.0;
 
-    Color canvasColor = Theme.of(context).canvasColor;
-    Color secondaryColor = Theme.of(context).hintColor;
-    TextStyle inputTextStyle = Theme.of(context).textTheme.subtitle2;
+    final Color canvasColor = Theme.of(context).canvasColor;
+    final Color secondaryColor = Theme.of(context).hintColor;
+    final TextStyle inputTextStyle = Theme.of(context).textTheme.subtitle2;
 
-    return Container(
-      child: Card(
-        margin: EdgeInsets.symmetric(vertical: smallVerticalDistance / 2),
-        color: canvasColor,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: textFieldPadding),
-          child: TextFormField(
-            obscureText: widget.obscureText ?? false,
-            autovalidate: widget.autovalidate ?? false,
-            validator: widget.validator,
-            focusNode: focus,
-            style: inputTextStyle,
-            decoration: InputDecoration(
-              labelText: widget.text.toUpperCase(),
-              labelStyle: TextStyle(color: secondaryColor),
-              icon: Icon(
-                widget.icon,
-                color: secondaryColor,
-              ),
-              focusColor: canvasColor,
-              border: InputBorder.none,
-              focusedBorder: InputBorder.none,
-              enabledBorder: InputBorder.none,
-              errorBorder: InputBorder.none,
-              disabledBorder: InputBorder.none,
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: smallVerticalDistance / 2),
+      color: canvasColor,
+      elevation: focus.hasFocus ? textFieldElevation : 0,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: textFieldPadding),
+        child: TextFormField(
+          obscureText: widget.obscureText ?? false,
+          autovalidate: widget.autovalidate ?? false,
+          validator: widget.validator,
+          focusNode: focus,
+          style: inputTextStyle,
+          decoration: InputDecoration(
+            labelText: widget.text.toUpperCase(),
+            labelStyle: TextStyle(color: secondaryColor),
+            icon: Icon(
+              widget.icon,
+              color: secondaryColor,
             ),
+            focusColor: canvasColor,
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
           ),
         ),
-        elevation: focus.hasFocus ? textFieldElevation : 0,
       ),
     );
   }

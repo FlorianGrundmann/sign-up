@@ -14,8 +14,8 @@ class MainButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double buttonCornerRadius = 25.0;
-    final double buttonPadding = 25.0;
+    const double buttonCornerRadius = 25.0;
+    const double buttonPadding = 25.0;
 
     final Icon icon = iconData != null
         ? Icon(
@@ -25,7 +25,7 @@ class MainButton extends StatelessWidget {
         : null;
 
     return RaisedButton.icon(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
           horizontal: buttonPadding, vertical: buttonPadding / 2),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(buttonCornerRadius),

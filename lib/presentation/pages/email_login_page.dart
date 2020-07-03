@@ -11,7 +11,7 @@ import '../styles/constants.dart';
 import 'email_sign_up_page.dart';
 
 class EmailLoginPage extends StatefulWidget {
-  EmailLoginPage({Key key}) : super(key: key);
+  const EmailLoginPage({Key key}) : super(key: key);
 
   @override
   _EmailLoginPageState createState() => _EmailLoginPageState();
@@ -22,14 +22,12 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: BarlessScaffold(
-        body: Stack(
-          children: <Widget>[
-            ToprightLogo(),
-            _buildBody(),
-          ],
-        ),
+    return BarlessScaffold(
+      body: Stack(
+        children: <Widget>[
+          const ToprightLogo(),
+          _buildBody(),
+        ],
       ),
     );
   }
@@ -59,8 +57,8 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
   }
 
   Widget _buildHeading() {
-    final String headingText = 'Login';
-    final String subHeadingText = 'Please sign in to continue.';
+    const String headingText = 'Login';
+    const String subHeadingText = 'Please sign in to continue.';
 
     return Heading(
       text: headingText,
@@ -100,7 +98,9 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
             onPressedLink: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => EmailSignUpPage()),
+                MaterialPageRoute(
+                  builder: (context) => const EmailSignUpPage(),
+                ),
               );
             },
           ),
@@ -116,7 +116,7 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
       onPressed: () {
         if (_formKey.currentState.validate()) {
           Scaffold.of(context)
-              .showSnackBar(SnackBar(content: Text('Processing Data')));
+              .showSnackBar(const SnackBar(content: Text('Processing Data')));
         }
       },
       iconData: Icons.arrow_forward,

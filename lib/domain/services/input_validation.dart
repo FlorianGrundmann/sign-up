@@ -27,7 +27,7 @@ class InputValidation {
       return noEmail;
     }
 
-    var pattern =
+    const String pattern =
         r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$';
     if (!email.contains(RegExp(pattern))) {
       return invalidEmail;
