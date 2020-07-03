@@ -1,0 +1,6 @@
+{
+  "files.exclude": {
+    "lib\\domain\\auth\\auth_failure.freezed.dart": true,
+    "lib\\domain\\auth\\user.freezed.dart": true
+  }
+}
