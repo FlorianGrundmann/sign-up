@@ -2,12 +2,15 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:injectable/injectable.dart';
 import 'package:sign_up/domain/auth/auth.dart';
 import 'package:sign_up/domain/auth/auth_failure.dart';
 import 'package:sign_up/domain/auth/user.dart';
 
 import 'firebase_user_mapper.dart';
 
+@lazySingleton
+@RegisterAs(Auth)
 class FirebaseAuthFacade implements Auth {
   final FirebaseAuth _firebaseAuth;
 
