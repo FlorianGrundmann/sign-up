@@ -17,7 +17,7 @@ class Heading extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextStyle headlineStyle = Theme.of(context).textTheme.headline4;
     final TextStyle subtitle = Theme.of(context).textTheme.headline5;
-    final Widget tinyVerticalDistance = Constants.tinyVerticalWhiteSpace;
+    const Widget tinyVerticalDistance = Constants.tinyVerticalWhiteSpace;
 
     return Align(
       alignment: Alignment.bottomLeft,
