@@ -2,8 +2,8 @@ part of 'auth_form_bloc.dart';
 
 @freezed
 abstract class AuthFormEvent with _$AuthFormEvent {
-  const factory AuthFormEvent.registerWithEmailAndPasswordPressed() =
+  const factory AuthFormEvent.registerWithEmailAndPassword() =
       RegisterWithEmailAndPassword;
-  const factory AuthFormEvent.logInWithEmailAndPasswordPressed() =
+  const factory AuthFormEvent.logInWithEmailAndPassword() =
       LogInWithEmailAndPassword;
 }

@@ -12,11 +12,11 @@ T _$identity<T>(T value) => value;
 class _$AuthFormEventTearOff {
   const _$AuthFormEventTearOff();
 
-  RegisterWithEmailAndPassword registerWithEmailAndPasswordPressed() {
+  RegisterWithEmailAndPassword registerWithEmailAndPassword() {
     return const RegisterWithEmailAndPassword();
   }
 
-  LogInWithEmailAndPassword logInWithEmailAndPasswordPressed() {
+  LogInWithEmailAndPassword logInWithEmailAndPassword() {
     return const LogInWithEmailAndPassword();
   }
 }
@@ -27,29 +27,25 @@ const $AuthFormEvent = _$AuthFormEventTearOff();
 mixin _$AuthFormEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result registerWithEmailAndPasswordPressed(),
-    @required Result logInWithEmailAndPasswordPressed(),
+    @required Result registerWithEmailAndPassword(),
+    @required Result logInWithEmailAndPassword(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result registerWithEmailAndPasswordPressed(),
-    Result logInWithEmailAndPasswordPressed(),
+    Result registerWithEmailAndPassword(),
+    Result logInWithEmailAndPassword(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required
-        Result registerWithEmailAndPasswordPressed(
-            RegisterWithEmailAndPassword value),
-    @required
-        Result logInWithEmailAndPasswordPressed(
-            LogInWithEmailAndPassword value),
+        Result registerWithEmailAndPassword(RegisterWithEmailAndPassword value),
+    @required Result logInWithEmailAndPassword(LogInWithEmailAndPassword value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result registerWithEmailAndPasswordPressed(
-        RegisterWithEmailAndPassword value),
-    Result logInWithEmailAndPasswordPressed(LogInWithEmailAndPassword value),
+    Result registerWithEmailAndPassword(RegisterWithEmailAndPassword value),
+    Result logInWithEmailAndPassword(LogInWithEmailAndPassword value),
     @required Result orElse(),
   });
 }
@@ -94,7 +90,7 @@ class _$RegisterWithEmailAndPassword implements RegisterWithEmailAndPassword {
 
   @override
   String toString() {
-    return 'AuthFormEvent.registerWithEmailAndPasswordPressed()';
+    return 'AuthFormEvent.registerWithEmailAndPassword()';
   }
 
   @override
@@ -108,24 +104,24 @@ class _$RegisterWithEmailAndPassword implements RegisterWithEmailAndPassword {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result registerWithEmailAndPasswordPressed(),
-    @required Result logInWithEmailAndPasswordPressed(),
+    @required Result registerWithEmailAndPassword(),
+    @required Result logInWithEmailAndPassword(),
   }) {
-    assert(registerWithEmailAndPasswordPressed != null);
-    assert(logInWithEmailAndPasswordPressed != null);
-    return registerWithEmailAndPasswordPressed();
+    assert(registerWithEmailAndPassword != null);
+    assert(logInWithEmailAndPassword != null);
+    return registerWithEmailAndPassword();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result registerWithEmailAndPasswordPressed(),
-    Result logInWithEmailAndPasswordPressed(),
+    Result registerWithEmailAndPassword(),
+    Result logInWithEmailAndPassword(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (registerWithEmailAndPasswordPressed != null) {
-      return registerWithEmailAndPasswordPressed();
+    if (registerWithEmailAndPassword != null) {
+      return registerWithEmailAndPassword();
     }
     return orElse();
   }
@@ -134,28 +130,24 @@ class _$RegisterWithEmailAndPassword implements RegisterWithEmailAndPassword {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required
-        Result registerWithEmailAndPasswordPressed(
-            RegisterWithEmailAndPassword value),
-    @required
-        Result logInWithEmailAndPasswordPressed(
-            LogInWithEmailAndPassword value),
+        Result registerWithEmailAndPassword(RegisterWithEmailAndPassword value),
+    @required Result logInWithEmailAndPassword(LogInWithEmailAndPassword value),
   }) {
-    assert(registerWithEmailAndPasswordPressed != null);
-    assert(logInWithEmailAndPasswordPressed != null);
-    return registerWithEmailAndPasswordPressed(this);
+    assert(registerWithEmailAndPassword != null);
+    assert(logInWithEmailAndPassword != null);
+    return registerWithEmailAndPassword(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result registerWithEmailAndPasswordPressed(
-        RegisterWithEmailAndPassword value),
-    Result logInWithEmailAndPasswordPressed(LogInWithEmailAndPassword value),
+    Result registerWithEmailAndPassword(RegisterWithEmailAndPassword value),
+    Result logInWithEmailAndPassword(LogInWithEmailAndPassword value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (registerWithEmailAndPasswordPressed != null) {
-      return registerWithEmailAndPasswordPressed(this);
+    if (registerWithEmailAndPassword != null) {
+      return registerWithEmailAndPassword(this);
     }
     return orElse();
   }
@@ -188,7 +180,7 @@ class _$LogInWithEmailAndPassword implements LogInWithEmailAndPassword {
 
   @override
   String toString() {
-    return 'AuthFormEvent.logInWithEmailAndPasswordPressed()';
+    return 'AuthFormEvent.logInWithEmailAndPassword()';
   }
 
   @override
@@ -202,24 +194,24 @@ class _$LogInWithEmailAndPassword implements LogInWithEmailAndPassword {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result registerWithEmailAndPasswordPressed(),
-    @required Result logInWithEmailAndPasswordPressed(),
+    @required Result registerWithEmailAndPassword(),
+    @required Result logInWithEmailAndPassword(),
   }) {
-    assert(registerWithEmailAndPasswordPressed != null);
-    assert(logInWithEmailAndPasswordPressed != null);
-    return logInWithEmailAndPasswordPressed();
+    assert(registerWithEmailAndPassword != null);
+    assert(logInWithEmailAndPassword != null);
+    return logInWithEmailAndPassword();
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result registerWithEmailAndPasswordPressed(),
-    Result logInWithEmailAndPasswordPressed(),
+    Result registerWithEmailAndPassword(),
+    Result logInWithEmailAndPassword(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (logInWithEmailAndPasswordPressed != null) {
-      return logInWithEmailAndPasswordPressed();
+    if (logInWithEmailAndPassword != null) {
+      return logInWithEmailAndPassword();
     }
     return orElse();
   }
@@ -228,28 +220,24 @@ class _$LogInWithEmailAndPassword implements LogInWithEmailAndPassword {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required
-        Result registerWithEmailAndPasswordPressed(
-            RegisterWithEmailAndPassword value),
-    @required
-        Result logInWithEmailAndPasswordPressed(
-            LogInWithEmailAndPassword value),
+        Result registerWithEmailAndPassword(RegisterWithEmailAndPassword value),
+    @required Result logInWithEmailAndPassword(LogInWithEmailAndPassword value),
   }) {
-    assert(registerWithEmailAndPasswordPressed != null);
-    assert(logInWithEmailAndPasswordPressed != null);
-    return logInWithEmailAndPasswordPressed(this);
+    assert(registerWithEmailAndPassword != null);
+    assert(logInWithEmailAndPassword != null);
+    return logInWithEmailAndPassword(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result registerWithEmailAndPasswordPressed(
-        RegisterWithEmailAndPassword value),
-    Result logInWithEmailAndPasswordPressed(LogInWithEmailAndPassword value),
+    Result registerWithEmailAndPassword(RegisterWithEmailAndPassword value),
+    Result logInWithEmailAndPassword(LogInWithEmailAndPassword value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (logInWithEmailAndPasswordPressed != null) {
-      return logInWithEmailAndPasswordPressed(this);
+    if (logInWithEmailAndPassword != null) {
+      return logInWithEmailAndPassword(this);
     }
     return orElse();
   }
