@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sign_up/application/auth/auth_form/auth_form_bloc.dart';
 
 import '../../domain/services/input_validation.dart';
+import '../../injection.dart';
 import '../Widgets/barless_scaffold.dart';
 import '../Widgets/bottom_link_text.dart';
 import '../Widgets/flat_card_text_field.dart';
@@ -17,30 +20,31 @@ class EmailSignUpPage extends StatefulWidget {
 }
 
 class _EmailSignUpPageState extends State<EmailSignUpPage> {
-  final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return BarlessScaffold(
       body: Stack(
         children: <Widget>[
           const ToprightLogo(),
-          _buildBody(),
+          _SignUpBody(),
         ],
       ),
     );
   }
+}
 
-  Widget _buildBody() {
-    final double mainPadding = Constants.scaffoldPadding;
-    final Widget verticalWhiteSpace = Constants.verticalWhiteSpace;
+class _SignUpBody extends StatelessWidget {
+  final double mainPadding = Constants.scaffoldPadding;
+  final Widget verticalWhiteSpace = Constants.verticalWhiteSpace;
 
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: mainPadding),
       child: Column(
         children: <Widget>[
           Flexible(
-            child: _buildHeading(),
+            child: _Heading(),
           ),
           verticalWhiteSpace,
           Flexible(
@@ -48,7 +52,7 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
             child: SingleChildScrollView(
               child: Container(
                 color: Theme.of(context).canvasColor,
-                child: _buildForm(),
+                child: _SignUpForm(),
               ),
             ),
           ),
@@ -56,44 +60,11 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
       ),
     );
   }
+}
 
-  Widget _buildForm() {
-    final Widget verticalDistance = Constants.smallVerticalWhiteSpace;
-    final InputValidation validation = InputValidation();
-
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: <Widget>[
-          FlatCardTextField(
-            text: 'username',
-            icon: Icons.account_circle,
-            validator: validation.validateUsername,
-          ),
-          FlatCardTextField(
-            text: 'email',
-            icon: Icons.email,
-            validator: validation.validateEmail,
-          ),
-          FlatCardTextField(
-            text: 'password',
-            icon: Icons.lock_outline,
-            obscureText: true,
-            validator: validation.validatePassword,
-          ),
-          verticalDistance,
-          Align(
-            alignment: Alignment.topRight,
-            child: _buildSignUpButton(),
-          ),
-          verticalDistance,
-          _buildBottomText(),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildHeading() {
+class _Heading extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
     const String headingText = 'Create Account';
 
     return Heading(
@@ -101,26 +72,82 @@ class _EmailSignUpPageState extends State<EmailSignUpPage> {
       alignment: Alignment.bottomLeft,
     );
   }
+}
 
-  Widget _buildSignUpButton() {
-    const String buttonText = 'SIGN UP';
+class _SignUpForm extends StatelessWidget {
+  final _formKey = GlobalKey<FormState>();
 
+  final Widget verticalDistance = Constants.smallVerticalWhiteSpace;
+  final InputValidation validation = InputValidation();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => getIt<AuthFormBloc>(),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: <Widget>[
+            FlatCardTextField(
+              text: 'username',
+              icon: Icons.account_circle,
+              validator: validation.validateUsername,
+            ),
+            FlatCardTextField(
+              text: 'email',
+              icon: Icons.email,
+              validator: validation.validateEmail,
+            ),
+            FlatCardTextField(
+              text: 'password',
+              icon: Icons.lock_outline,
+              obscureText: true,
+              validator: validation.validatePassword,
+            ),
+            verticalDistance,
+            Align(
+              alignment: Alignment.topRight,
+              child: _SignUpButton(
+                formKey: _formKey,
+              ),
+            ),
+            verticalDistance,
+            _BottomText(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SignUpButton extends StatelessWidget {
+  String get _buttonText => 'SIGN UP';
+  final GlobalKey<FormState> formKey;
+
+  const _SignUpButton({Key key, this.formKey}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return MainButton(
       onPressed: () {
-        if (_formKey.currentState.validate()) {
-          Scaffold.of(context)
-              .showSnackBar(const SnackBar(content: Text('Processing Data')));
+        if (formKey.currentState.validate()) {
+          context
+              .bloc<AuthFormBloc>()
+              .add(const RegisterWithEmailAndPassword());
         }
       },
-      text: buttonText,
+      text: _buttonText,
       iconData: Icons.arrow_forward,
     );
   }
+}
 
-  Widget _buildBottomText() {
-    const String bottomText = 'Already have an account?';
-    const String linkText = 'Sign in';
+class _BottomText extends StatelessWidget {
+  final String bottomText = 'Already have an account?';
+  final String linkText = 'Sign in';
 
+  @override
+  Widget build(BuildContext context) {
     return BottomLinkText(
       text: bottomText,
       linkText: linkText,
