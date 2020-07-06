@@ -77,6 +77,8 @@ class _LoginHeading extends StatelessWidget {
 
 class _LoginForm extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final Widget verticalDistance = Constants.smallVerticalWhiteSpace;
   final InputValidation validation = InputValidation();
 
@@ -92,17 +94,23 @@ class _LoginForm extends StatelessWidget {
               text: 'email',
               icon: Icons.email,
               validator: validation.validateEmail,
+              controller: emailController,
             ),
             FlatCardTextField(
               text: 'password',
               icon: Icons.lock_outline,
               obscureText: true,
               validator: validation.validatePassword,
+              controller: passwordController,
             ),
             verticalDistance,
             Align(
               alignment: Alignment.topRight,
-              child: _LoginButton(formKey: _formKey),
+              child: _LoginButton(
+                formKey: _formKey,
+                emailController: emailController,
+                passwordController: passwordController,
+              ),
             ),
             verticalDistance,
             BottomLinkText(
@@ -127,8 +135,15 @@ class _LoginForm extends StatelessWidget {
 
 class _LoginButton extends StatelessWidget {
   final GlobalKey<FormState> formKey;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
 
-  const _LoginButton({Key key, this.formKey}) : super(key: key);
+  const _LoginButton({
+    Key key,
+    this.formKey,
+    this.emailController,
+    this.passwordController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +151,12 @@ class _LoginButton extends StatelessWidget {
       text: 'LOGIN',
       onPressed: () {
         if (formKey.currentState.validate()) {
-          context.bloc<AuthFormBloc>().add(const LogInWithEmailAndPassword());
+          context.bloc<AuthFormBloc>().add(
+                LoginWithEmailAndPassword(
+                  email: emailController.text,
+                  password: passwordController.text,
+                ),
+              );
         }
       },
       iconData: Icons.arrow_forward,

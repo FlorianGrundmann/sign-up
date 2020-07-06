@@ -76,6 +76,9 @@ class _Heading extends StatelessWidget {
 
 class _SignUpForm extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   final Widget verticalDistance = Constants.smallVerticalWhiteSpace;
   final InputValidation validation = InputValidation();
@@ -92,23 +95,29 @@ class _SignUpForm extends StatelessWidget {
               text: 'username',
               icon: Icons.account_circle,
               validator: validation.validateUsername,
+              controller: usernameController,
             ),
             FlatCardTextField(
               text: 'email',
               icon: Icons.email,
               validator: validation.validateEmail,
+              controller: emailController,
             ),
             FlatCardTextField(
               text: 'password',
               icon: Icons.lock_outline,
               obscureText: true,
               validator: validation.validatePassword,
+              controller: passwordController,
             ),
             verticalDistance,
             Align(
               alignment: Alignment.topRight,
               child: _SignUpButton(
                 formKey: _formKey,
+                emailController: emailController,
+                usernameController: usernameController,
+                passwordController: passwordController,
               ),
             ),
             verticalDistance,
@@ -122,18 +131,33 @@ class _SignUpForm extends StatelessWidget {
 
 class _SignUpButton extends StatelessWidget {
   String get _buttonText => 'SIGN UP';
+
+  final TextEditingController usernameController;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+
   final GlobalKey<FormState> formKey;
 
-  const _SignUpButton({Key key, this.formKey}) : super(key: key);
+  const _SignUpButton({
+    Key key,
+    this.formKey,
+    this.usernameController,
+    this.emailController,
+    this.passwordController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MainButton(
       onPressed: () {
         if (formKey.currentState.validate()) {
-          context
-              .bloc<AuthFormBloc>()
-              .add(const RegisterWithEmailAndPassword());
+          context.bloc<AuthFormBloc>().add(
+                RegisterWithEmailAndPassword(
+                  email: emailController.text,
+                  password: emailController.text,
+                  username: usernameController.text,
+                ),
+              );
         }
       },
       text: _buttonText,

@@ -6,6 +6,8 @@ class FlatCardTextField extends StatefulWidget {
   final bool autovalidate;
   final bool obscureText;
   final String Function(String) validator;
+  final Function(String) onChanged;
+  final TextEditingController controller;
 
   const FlatCardTextField({
     Key key,
@@ -14,6 +16,8 @@ class FlatCardTextField extends StatefulWidget {
     this.validator,
     this.autovalidate,
     this.obscureText,
+    this.onChanged,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -53,6 +57,8 @@ class _FlatCardTextFieldState extends State<FlatCardTextField> {
           validator: widget.validator,
           focusNode: focus,
           style: inputTextStyle,
+          onChanged: widget.onChanged,
+          controller: widget.controller,
           decoration: InputDecoration(
             labelText: widget.text.toUpperCase(),
             labelStyle: TextStyle(color: secondaryColor),

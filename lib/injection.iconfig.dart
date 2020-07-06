@@ -14,5 +14,5 @@ import 'package:get_it/get_it.dart';
 void $initGetIt(GetIt g, {String environment}) {
   g.registerLazySingleton<Auth>(() => FirebaseAuthFacade(g<FirebaseAuth>()));
   g.registerFactory<AuthBloc>(() => AuthBloc());
-  g.registerFactory<AuthFormBloc>(() => AuthFormBloc());
+  g.registerFactory<AuthFormBloc>(() => AuthFormBloc(g<Auth>()));
 }
