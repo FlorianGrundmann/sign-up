@@ -12,6 +12,7 @@ import '../Widgets/heading.dart';
 import '../Widgets/main_button.dart';
 import '../Widgets/topright_logo.dart';
 import '../styles/constants.dart';
+import 'welcome_page.dart';
 
 class EmailSignUpPage extends StatefulWidget {
   const EmailSignUpPage({Key key}) : super(key: key);
@@ -91,8 +92,11 @@ class _SignUpForm extends StatelessWidget {
       child: BlocListener<AuthFormBloc, AuthFormState>(
         listener: (context, state) {
           if (state.loggedIn) {
-            //TODO implement routing after logged in.
-            print('>>>>>>>>>>>>>>>>>>>>>>> Logged in');
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => WelcomePage()),
+              (Route<dynamic> route) => false,
+            );
           }
           if (state.failureHappend) {
             if (state.failure != null) {
@@ -180,7 +184,7 @@ class _SignUpButton extends StatelessWidget {
           context.bloc<AuthFormBloc>().add(
                 RegisterWithEmailAndPassword(
                   email: emailController.text,
-                  password: emailController.text,
+                  password: passwordController.text,
                   username: usernameController.text,
                 ),
               );

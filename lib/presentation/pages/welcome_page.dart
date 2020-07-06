@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sign_up/presentation/Widgets/main_button.dart';
+
+import '../Widgets/main_button.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
