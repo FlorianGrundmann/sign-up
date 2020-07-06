@@ -1,7 +1,9 @@
+import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sign_up/application/auth/auth_form/auth_form_bloc.dart';
+import 'package:sign_up/presentation/Widgets/failure_flushbar.dart';
 
+import '../../application/auth/auth_form/auth_form_bloc.dart';
 import '../../domain/services/input_validation.dart';
 import '../../injection.dart';
 import '../Widgets/barless_scaffold.dart';
@@ -85,63 +87,75 @@ class _LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<AuthFormBloc>(),
-      child: BlocListener<AuthFormBloc, AuthFormState>(
-        listener: (context, state) {
-          if (state.failureHappend) {
-            //TODO implement failure handling.
-            print('>>>>>>>>>>>>>>>>>>>> Failure happened.');
-          }
+        create: (context) => getIt<AuthFormBloc>(),
+        child: BlocConsumer<AuthFormBloc, AuthFormState>(
+            listener: (context, state) {
           if (state.loggedIn) {
             //TODO implement routing after logging in.
-            print('>>>>>>>>>>>>>>>>>>>> Logged in.');
+            print('>>>>>>>>>>>>>>>>>>> Logged in.');
           }
-        },
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: <Widget>[
-              FlatCardTextField(
-                text: 'email',
-                icon: Icons.email,
-                validator: validation.validateEmail,
-                controller: emailController,
-              ),
-              FlatCardTextField(
-                text: 'password',
-                icon: Icons.lock_outline,
-                obscureText: true,
-                validator: validation.validatePassword,
-                controller: passwordController,
-              ),
-              verticalDistance,
-              Align(
-                alignment: Alignment.topRight,
-                child: _LoginButton(
-                  formKey: _formKey,
-                  emailController: emailController,
-                  passwordController: passwordController,
+          if (state.failureHappend) {
+            if (state.failure != null) {
+              FlushbarHelper.createError(
+                message: state.failure.map(
+                  cancelledByUser: (_) => 'Login cancelled by user.',
+                  serverError: (_) => 'An unexpected error happened.',
+                  emailAlreadyInUse: (_) => 'Email is already taken.',
+                  invalidEmailAndPasswordCombination: (_) =>
+                      'Invalid email and password combination.',
                 ),
-              ),
-              verticalDistance,
-              BottomLinkText(
-                text: "Don't have an account?",
-                linkText: 'Sign up',
-                onPressedLink: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const EmailSignUpPage(),
-                    ),
-                  );
-                },
-              ),
-              //_buildBottomText(),
-            ],
-          ),
-        ),
-      ),
-    );
+              ).show(context);
+            } else {
+              FlushbarHelper.createError(
+                message: 'An unexpected error happened',
+              ).show(context);
+            }
+          }
+        }, builder: (context, state) {
+          return Form(
+            key: _formKey,
+            child: Column(
+              children: <Widget>[
+                FlatCardTextField(
+                  text: 'email',
+                  icon: Icons.email,
+                  validator: validation.validateEmail,
+                  controller: emailController,
+                ),
+                FlatCardTextField(
+                  text: 'password',
+                  icon: Icons.lock_outline,
+                  obscureText: true,
+                  validator: validation.validatePassword,
+                  controller: passwordController,
+                ),
+                verticalDistance,
+                Align(
+                  alignment: Alignment.topRight,
+                  child: _LoginButton(
+                    formKey: _formKey,
+                    emailController: emailController,
+                    passwordController: passwordController,
+                  ),
+                ),
+                verticalDistance,
+                BottomLinkText(
+                  text: "Don't have an account?",
+                  linkText: 'Sign up',
+                  onPressedLink: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const EmailSignUpPage(),
+                      ),
+                    );
+                  },
+                ),
+                //_buildBottomText(),
+              ],
+            ),
+          );
+        }));
   }
 }
 
