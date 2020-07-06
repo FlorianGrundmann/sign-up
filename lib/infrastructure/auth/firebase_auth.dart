@@ -9,8 +9,7 @@ import 'package:sign_up/domain/auth/user.dart';
 
 import 'firebase_user_mapper.dart';
 
-@lazySingleton
-@RegisterAs(Auth)
+@LazySingleton(as: Auth)
 class FirebaseAuthFacade implements Auth {
   final FirebaseAuth _firebaseAuth;
 

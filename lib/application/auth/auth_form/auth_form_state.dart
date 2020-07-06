@@ -6,13 +6,15 @@ abstract class AuthFormState with _$AuthFormState {
     @required String email,
     @required String password,
     String username,
-    bool loggedIn,
-    bool failureHappend,
+    @required bool loggedIn,
+    @required bool failureHappend,
     AuthFailure failure,
   }) = _SignInFormState;
 
   factory AuthFormState.initial() => const AuthFormState(
         email: '',
         password: '',
+        failureHappend: false,
+        loggedIn: false,
       );
 }

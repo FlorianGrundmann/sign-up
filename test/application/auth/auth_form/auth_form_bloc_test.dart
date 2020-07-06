@@ -53,6 +53,7 @@ void main() {
           username: tUsername,
           failureHappend: true,
           failure: tFailure,
+          loggedIn: false,
         ),
       ];
       when(mockAuth.registerWithEmailAndPassword(
@@ -134,6 +135,7 @@ void main() {
           password: tPassword,
           failureHappend: true,
           failure: tFailure,
+          loggedIn: false,
         ),
       ];
       when(

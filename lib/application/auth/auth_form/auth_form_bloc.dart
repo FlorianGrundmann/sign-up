@@ -35,7 +35,7 @@ class AuthFormBloc extends Bloc<AuthFormEvent, AuthFormState> {
         await auth.registerWithEmailAndPassword(
             emailAddress: event.email, password: event.password);
 
-    final AuthFormState resultState = AuthFormState(
+    final AuthFormState resultState = AuthFormState.initial().copyWith(
       email: event.email,
       password: event.password,
       username: event.username,
@@ -61,7 +61,7 @@ class AuthFormBloc extends Bloc<AuthFormEvent, AuthFormState> {
       password: event.password,
     );
 
-    final AuthFormState resultState = AuthFormState(
+    final AuthFormState resultState = AuthFormState.initial().copyWith(
       email: event.email,
       password: event.password,
     );

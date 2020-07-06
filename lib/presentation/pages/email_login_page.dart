@@ -86,47 +86,59 @@ class _LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<AuthFormBloc>(),
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: <Widget>[
-            FlatCardTextField(
-              text: 'email',
-              icon: Icons.email,
-              validator: validation.validateEmail,
-              controller: emailController,
-            ),
-            FlatCardTextField(
-              text: 'password',
-              icon: Icons.lock_outline,
-              obscureText: true,
-              validator: validation.validatePassword,
-              controller: passwordController,
-            ),
-            verticalDistance,
-            Align(
-              alignment: Alignment.topRight,
-              child: _LoginButton(
-                formKey: _formKey,
-                emailController: emailController,
-                passwordController: passwordController,
+      child: BlocListener<AuthFormBloc, AuthFormState>(
+        listener: (context, state) {
+          if (state.failureHappend) {
+            //TODO implement failure handling.
+            print('>>>>>>>>>>>>>>>>>>>> Failure happened.');
+          }
+          if (state.loggedIn) {
+            //TODO implement routing after logging in.
+            print('>>>>>>>>>>>>>>>>>>>> Logged in.');
+          }
+        },
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: <Widget>[
+              FlatCardTextField(
+                text: 'email',
+                icon: Icons.email,
+                validator: validation.validateEmail,
+                controller: emailController,
               ),
-            ),
-            verticalDistance,
-            BottomLinkText(
-              text: "Don't have an account?",
-              linkText: 'Sign up',
-              onPressedLink: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const EmailSignUpPage(),
-                  ),
-                );
-              },
-            ),
-            //_buildBottomText(),
-          ],
+              FlatCardTextField(
+                text: 'password',
+                icon: Icons.lock_outline,
+                obscureText: true,
+                validator: validation.validatePassword,
+                controller: passwordController,
+              ),
+              verticalDistance,
+              Align(
+                alignment: Alignment.topRight,
+                child: _LoginButton(
+                  formKey: _formKey,
+                  emailController: emailController,
+                  passwordController: passwordController,
+                ),
+              ),
+              verticalDistance,
+              BottomLinkText(
+                text: "Don't have an account?",
+                linkText: 'Sign up',
+                onPressedLink: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const EmailSignUpPage(),
+                    ),
+                  );
+                },
+              ),
+              //_buildBottomText(),
+            ],
+          ),
         ),
       ),
     );

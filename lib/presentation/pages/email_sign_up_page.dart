@@ -87,42 +87,54 @@ class _SignUpForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<AuthFormBloc>(),
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: <Widget>[
-            FlatCardTextField(
-              text: 'username',
-              icon: Icons.account_circle,
-              validator: validation.validateUsername,
-              controller: usernameController,
-            ),
-            FlatCardTextField(
-              text: 'email',
-              icon: Icons.email,
-              validator: validation.validateEmail,
-              controller: emailController,
-            ),
-            FlatCardTextField(
-              text: 'password',
-              icon: Icons.lock_outline,
-              obscureText: true,
-              validator: validation.validatePassword,
-              controller: passwordController,
-            ),
-            verticalDistance,
-            Align(
-              alignment: Alignment.topRight,
-              child: _SignUpButton(
-                formKey: _formKey,
-                emailController: emailController,
-                usernameController: usernameController,
-                passwordController: passwordController,
+      child: BlocListener<AuthFormBloc, AuthFormState>(
+        listener: (context, state) {
+          if (state.loggedIn) {
+            //TODO implement routing after logged in.
+            print('>>>>>>>>>>>>>>>>>>>>>>> Logged in');
+          }
+          if (state.failureHappend) {
+            //TODO implement failure handling.
+            print('>>>>>>>>>>>>>>>>>>>>>> Failure happend');
+          }
+        },
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: <Widget>[
+              FlatCardTextField(
+                text: 'username',
+                icon: Icons.account_circle,
+                validator: validation.validateUsername,
+                controller: usernameController,
               ),
-            ),
-            verticalDistance,
-            _BottomText(),
-          ],
+              FlatCardTextField(
+                text: 'email',
+                icon: Icons.email,
+                validator: validation.validateEmail,
+                controller: emailController,
+              ),
+              FlatCardTextField(
+                text: 'password',
+                icon: Icons.lock_outline,
+                obscureText: true,
+                validator: validation.validatePassword,
+                controller: passwordController,
+              ),
+              verticalDistance,
+              Align(
+                alignment: Alignment.topRight,
+                child: _SignUpButton(
+                  formKey: _formKey,
+                  emailController: emailController,
+                  usernameController: usernameController,
+                  passwordController: passwordController,
+                ),
+              ),
+              verticalDistance,
+              _BottomText(),
+            ],
+          ),
         ),
       ),
     );

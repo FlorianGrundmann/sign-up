@@ -393,8 +393,8 @@ class _$AuthFormStateTearOff {
       {@required String email,
       @required String password,
       String username,
-      bool loggedIn,
-      bool failureHappend,
+      @required bool loggedIn,
+      @required bool failureHappend,
       AuthFailure failure}) {
     return _SignInFormState(
       email: email,
@@ -531,11 +531,13 @@ class _$_SignInFormState implements _SignInFormState {
       {@required this.email,
       @required this.password,
       this.username,
-      this.loggedIn,
-      this.failureHappend,
+      @required this.loggedIn,
+      @required this.failureHappend,
       this.failure})
       : assert(email != null),
-        assert(password != null);
+        assert(password != null),
+        assert(loggedIn != null),
+        assert(failureHappend != null);
 
   @override
   final String email;
@@ -597,8 +599,8 @@ abstract class _SignInFormState implements AuthFormState {
       {@required String email,
       @required String password,
       String username,
-      bool loggedIn,
-      bool failureHappend,
+      @required bool loggedIn,
+      @required bool failureHappend,
       AuthFailure failure}) = _$_SignInFormState;
 
   @override
