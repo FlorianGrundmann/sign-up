@@ -19,10 +19,18 @@ class MainButton extends StatelessWidget {
 
     final Icon icon = iconData != null
         ? Icon(
-            Icons.arrow_forward,
+            iconData,
             color: Theme.of(context).primaryTextTheme.button.color,
           )
-        : null;
+        : Icon(
+            Icons.arrow_forward,
+            color: Theme.of(context).primaryTextTheme.button.color,
+          );
+
+    final Text buttonText = Text(
+      text,
+      style: Theme.of(context).primaryTextTheme.button,
+    );
 
     return RaisedButton.icon(
       padding: const EdgeInsets.symmetric(
@@ -32,10 +40,7 @@ class MainButton extends StatelessWidget {
       ),
       elevation: 0,
       color: Theme.of(context).primaryColor,
-      icon: Text(
-        text,
-        style: Theme.of(context).primaryTextTheme.button,
-      ),
+      icon: buttonText,
       label: icon,
       onPressed: onPressed,
     );
