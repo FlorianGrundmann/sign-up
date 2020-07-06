@@ -1,7 +1,8 @@
+import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sign_up/application/auth/auth_form/auth_form_bloc.dart';
 
+import '../../application/auth/auth_form/auth_form_bloc.dart';
 import '../../domain/services/input_validation.dart';
 import '../../injection.dart';
 import '../Widgets/barless_scaffold.dart';
@@ -94,8 +95,21 @@ class _SignUpForm extends StatelessWidget {
             print('>>>>>>>>>>>>>>>>>>>>>>> Logged in');
           }
           if (state.failureHappend) {
-            //TODO implement failure handling.
-            print('>>>>>>>>>>>>>>>>>>>>>> Failure happend');
+            if (state.failure != null) {
+              FlushbarHelper.createError(
+                message: state.failure.map(
+                  cancelledByUser: (_) => 'Login cancelled by user.',
+                  serverError: (_) => 'An unexpected error happened.',
+                  emailAlreadyInUse: (_) => 'Email is already taken.',
+                  invalidEmailAndPasswordCombination: (_) =>
+                      'Invalid email and password combination.',
+                ),
+              ).show(context);
+            } else {
+              FlushbarHelper.createError(
+                message: 'An unexpected error happened',
+              ).show(context);
+            }
           }
         },
         child: Form(

@@ -7,6 +7,7 @@ part of 'auth_bloc.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// ignore: unused_element
 T _$identity<T>(T value) => value;
 
 class _$AuthEventTearOff {

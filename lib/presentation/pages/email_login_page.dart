@@ -1,7 +1,6 @@
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sign_up/presentation/Widgets/failure_flushbar.dart';
 
 import '../../application/auth/auth_form/auth_form_bloc.dart';
 import '../../domain/services/input_validation.dart';

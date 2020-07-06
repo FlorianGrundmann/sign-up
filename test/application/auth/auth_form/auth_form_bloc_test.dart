@@ -82,7 +82,6 @@ void main() {
           username: tUsername,
           loggedIn: true,
           failureHappend: false,
-          failure: null,
         ),
       ];
       when(mockAuth.registerWithEmailAndPassword(
