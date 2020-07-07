@@ -160,7 +160,6 @@ void main() {
           password: tPassword,
           failureHappend: false,
           loggedIn: true,
-          failure: null,
         ),
       ];
       when(mockAuth.logInWithEmailAndPassword(
