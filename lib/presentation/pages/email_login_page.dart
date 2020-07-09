@@ -93,7 +93,7 @@ class _LoginForm extends StatelessWidget {
           if (state.loggedIn) {
             Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (context) => WelcomePage()),
+              MaterialPageRoute(builder: (context) => const WelcomePage()),
               (Route<dynamic> route) => false,
             );
           }

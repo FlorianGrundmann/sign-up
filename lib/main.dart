@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 
 import 'injection.dart';
-import 'presentation/pages/email_login_page.dart';
+import 'presentation/pages/loading_page.dart';
 import 'presentation/styles/white_theme.dart';
 
 void main() {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Authentication Demo',
       theme: WhiteTheme().themeData,
-      home: const EmailLoginPage(),
+      home: const LoadingPage(),
     );
   }
 }
