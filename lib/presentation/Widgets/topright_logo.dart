@@ -9,7 +9,7 @@ class ToprightLogo extends StatelessWidget {
       top: -20,
       right: -50,
       child: Image.asset(
-        'assets/images/logo.png',
+        'assets/images/logo-flipped.png',
         scale: 1,
       ),
     );
