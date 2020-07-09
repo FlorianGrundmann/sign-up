@@ -46,10 +46,13 @@ class _LoginBody extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: mainPadding),
       child: Column(
         children: <Widget>[
-          Flexible(child: _LoginHeading()),
-          verticalWhiteSpace,
           Flexible(
             flex: 2,
+            child: _LoginHeading(),
+          ),
+          verticalWhiteSpace,
+          Flexible(
+            flex: 3,
             child: SingleChildScrollView(
               child: Container(
                 color: Theme.of(context).canvasColor,
@@ -65,7 +68,7 @@ class _LoginBody extends StatelessWidget {
 
 class _LoginHeading extends StatelessWidget {
   final String headingText = 'Login';
-  final String subHeadingText = 'Please sign in to continue.';
+  final String subHeadingText = 'Please login to continue.';
 
   @override
   Widget build(BuildContext context) {

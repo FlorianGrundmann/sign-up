@@ -198,7 +198,7 @@ class _SignUpButton extends StatelessWidget {
 
 class _BottomText extends StatelessWidget {
   final String bottomText = 'Already have an account?';
-  final String linkText = 'Sign in';
+  final String linkText = 'Login';
 
   @override
   Widget build(BuildContext context) {
