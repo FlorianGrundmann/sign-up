@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "301168346733",
+    "firebase_url": "https://sign-up-c3703.firebaseio.com",
+    "project_id": "sign-up-c3703",
+    "storage_bucket": "sign-up-c3703.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301168346733:android:6fdb6c0dca65490d9fe164",
+        "android_client_info": {
+          "package_name": "net.foxling.sign_up"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "301168346733-gca4gcrp3v6dhrsb98l51frlkneaknn3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRTfZ5kaJqJICLk3RSW8Qq0igUpNpxqs8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "301168346733-gca4gcrp3v6dhrsb98l51frlkneaknn3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
